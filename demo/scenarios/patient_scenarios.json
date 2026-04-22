@@ -1,0 +1,86 @@
+[
+  {
+    "scenario_id": "hf_stable_candidate",
+    "description": "Likely candidate with heart failure and acceptable kidney function",
+    "patient": {
+      "patient_id": "s1",
+      "age": 62,
+      "sex": "male",
+      "conditions": ["heart_failure", "hypertension"],
+      "medications": ["aspirin", "metoprolol"],
+      "labs": {"egfr": 58.0, "hemoglobin": 13.2}
+    },
+    "protocol_focus": "heart failure reduced ejection fraction renal function constraints",
+    "fetch_query": "heart failure"
+  },
+  {
+    "scenario_id": "hf_elderly_over_age",
+    "description": "Older patient expected to fail many age-gated protocols",
+    "patient": {
+      "patient_id": "s2",
+      "age": 84,
+      "sex": "female",
+      "conditions": ["heart_failure"],
+      "medications": ["furosemide"],
+      "labs": {"egfr": 51.0, "hemoglobin": 12.7}
+    },
+    "protocol_focus": "heart failure age eligibility constraints",
+    "fetch_query": "heart failure"
+  },
+  {
+    "scenario_id": "hf_ckd_exclusion_risk",
+    "description": "CKD case that may trigger renal insufficiency exclusion",
+    "patient": {
+      "patient_id": "s3",
+      "age": 69,
+      "sex": "female",
+      "conditions": ["heart_failure", "chronic_kidney_disease"],
+      "medications": ["furosemide", "spironolactone"],
+      "labs": {"egfr": 38.0, "hemoglobin": 12.9}
+    },
+    "protocol_focus": "heart failure renal insufficiency exclusion",
+    "fetch_query": "heart failure"
+  },
+  {
+    "scenario_id": "hf_missing_labs",
+    "description": "Missing key renal labs for constrained protocol checks",
+    "patient": {
+      "patient_id": "s4",
+      "age": 57,
+      "sex": "male",
+      "conditions": ["heart_failure"],
+      "medications": ["carvedilol"],
+      "labs": {}
+    },
+    "protocol_focus": "heart failure kidney and age constraints",
+    "fetch_query": "heart failure"
+  },
+  {
+    "scenario_id": "hf_with_anticoagulation",
+    "description": "Patient on anticoagulation to test medication exclusion overlap",
+    "patient": {
+      "patient_id": "s5",
+      "age": 60,
+      "sex": "male",
+      "conditions": ["heart_failure", "atrial_fibrillation"],
+      "medications": ["warfarin", "metoprolol"],
+      "labs": {"egfr": 55.0, "hemoglobin": 14.1}
+    },
+    "protocol_focus": "heart failure exclusion criteria anticoagulation",
+    "fetch_query": "heart failure"
+  },
+  {
+    "scenario_id": "htn_non_hf_negative_control",
+    "description": "Negative control without heart failure diagnosis",
+    "patient": {
+      "patient_id": "s6",
+      "age": 53,
+      "sex": "female",
+      "conditions": ["hypertension"],
+      "medications": ["amlodipine"],
+      "labs": {"egfr": 77.0, "hemoglobin": 13.8}
+    },
+    "protocol_focus": "heart failure reduced ejection fraction",
+    "fetch_query": "heart failure"
+  }
+]
