@@ -32,9 +32,11 @@ This project is optimized for interview signal:
 - `src/retrieval/criteria_parser.py` - inclusion/exclusion parser
 - `src/retrieval/indexer.py` - lightweight in-memory relevance ranker
 - `src/agents/retrieval_agent.py` - retrieval agent for citation-ready evidence
+- `src/agents/protocol_audit_agent.py` - protocol audit agent for eligibility decisions
 - `demo/run_demo.py` - local demo entry point
 - `demo/run_retrieval_demo.py` - retrieval + ranking demo
 - `demo/run_retrieval_agent_demo.py` - retrieval agent evidence-pack demo
+- `demo/run_protocol_audit_demo.py` - retrieval + protocol audit end-to-end demo
 - `eval/labeled_cases.json` - starter labeled set
 - `eval/run_eval.py` - baseline evaluator
 - `docs/project-thesis.md` - positioning and product narrative
@@ -49,6 +51,7 @@ python -m demo.run_demo
 python -m eval.run_eval
 python -m demo.run_retrieval_demo
 python -m demo.run_retrieval_agent_demo
+python -m demo.run_protocol_audit_demo
 ```
 
 The retrieval demo requires internet access to call the ClinicalTrials.gov API.
