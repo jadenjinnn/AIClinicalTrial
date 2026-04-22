@@ -14,6 +14,7 @@ class ProtocolAuditAgent:
         passes: list[str] = []
         violations: list[str] = []
         missing_data: list[str] = []
+        error_tags: set[str] = set()
         justifications: list[str] = []
         evidence_items: list[EvidenceItem] = []
 
@@ -66,9 +67,14 @@ class ProtocolAuditAgent:
         if not evidence_pack.citations:
             missing_data.append("no retrieved citations available for audit")
             justifications.append("Cannot make robust decision without protocol evidence.")
+            error_tags.add("retrieval_miss")
 
         if not age_checked:
             missing_data.append("no explicit age criterion detected in retrieved snippets")
+            error_tags.add("criteria_parse_error")
+
+        if missing_data:
+            error_tags.add("missing_data")
 
         eligible = len(violations) == 0 and len(evidence_pack.citations) > 0
         confidence = 0.85 if eligible else 0.7
@@ -81,6 +87,9 @@ class ProtocolAuditAgent:
         else:
             justifications.append("At least one protocol conflict or evidence gap was detected.")
 
+        if self._has_reasoning_conflict(passes, violations):
+            error_tags.add("reasoning_conflict")
+
         return EligibilityDecision(
             patient_id=patient.patient_id,
             trial_id=primary_trial_id,
@@ -89,6 +98,7 @@ class ProtocolAuditAgent:
             passes=passes,
             violations=violations,
             missing_data=missing_data,
+            error_tags=sorted(error_tags),
             justifications=justifications,
             evidence=evidence_items,
         )
@@ -117,3 +127,8 @@ class ProtocolAuditAgent:
             if any(token in lowered for token in ["at most", "<=", "younger than"]):
                 return age <= threshold
         return None
+
+    def _has_reasoning_conflict(self, passes: list[str], violations: list[str]) -> bool:
+        age_pass = any(item.startswith("age fits inclusion range") for item in passes)
+        age_violation = any(item.startswith("age fails inclusion range") for item in violations)
+        return age_pass and age_violation

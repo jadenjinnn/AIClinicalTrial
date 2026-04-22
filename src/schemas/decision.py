@@ -19,6 +19,7 @@ class EligibilityDecision:
     passes: List[str] = field(default_factory=list)
     violations: List[str] = field(default_factory=list)
     missing_data: List[str] = field(default_factory=list)
+    error_tags: List[str] = field(default_factory=list)
     justifications: List[str] = field(default_factory=list)
     evidence: List[EvidenceItem] = field(default_factory=list)
 
