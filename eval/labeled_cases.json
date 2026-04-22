@@ -1,0 +1,71 @@
+[
+  {
+    "case_id": "case_001",
+    "patient": {
+      "patient_id": "p1",
+      "age": 62,
+      "sex": "male",
+      "conditions": ["heart_failure"],
+      "medications": ["aspirin"],
+      "labs": {"egfr": 58.0, "hemoglobin": 13.1}
+    },
+    "trial": {
+      "trial_id": "NCT-DEMO-001",
+      "title": "Heart Failure Therapy Pilot",
+      "min_age": 18,
+      "max_age": 75,
+      "required_conditions": ["heart_failure"],
+      "excluded_conditions": ["active_cancer"],
+      "excluded_medications": ["warfarin"],
+      "required_labs_min": {"egfr": 45.0},
+      "required_labs_max": {"hemoglobin": 16.0}
+    },
+    "expected_eligible": true
+  },
+  {
+    "case_id": "case_002",
+    "patient": {
+      "patient_id": "p2",
+      "age": 81,
+      "sex": "female",
+      "conditions": ["heart_failure"],
+      "medications": ["aspirin"],
+      "labs": {"egfr": 52.0, "hemoglobin": 12.9}
+    },
+    "trial": {
+      "trial_id": "NCT-DEMO-001",
+      "title": "Heart Failure Therapy Pilot",
+      "min_age": 18,
+      "max_age": 75,
+      "required_conditions": ["heart_failure"],
+      "excluded_conditions": ["active_cancer"],
+      "excluded_medications": ["warfarin"],
+      "required_labs_min": {"egfr": 45.0},
+      "required_labs_max": {"hemoglobin": 16.0}
+    },
+    "expected_eligible": false
+  },
+  {
+    "case_id": "case_003",
+    "patient": {
+      "patient_id": "p3",
+      "age": 58,
+      "sex": "male",
+      "conditions": ["hypertension"],
+      "medications": ["warfarin"],
+      "labs": {"egfr": 40.0, "hemoglobin": 14.2}
+    },
+    "trial": {
+      "trial_id": "NCT-DEMO-001",
+      "title": "Heart Failure Therapy Pilot",
+      "min_age": 18,
+      "max_age": 75,
+      "required_conditions": ["heart_failure"],
+      "excluded_conditions": ["active_cancer"],
+      "excluded_medications": ["warfarin"],
+      "required_labs_min": {"egfr": 45.0},
+      "required_labs_max": {"hemoglobin": 16.0}
+    },
+    "expected_eligible": false
+  }
+]
